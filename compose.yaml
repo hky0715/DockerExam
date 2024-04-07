@@ -1,0 +1,25 @@
+# Use root/example as user/password credentials
+# https://hub.docker.com/_/mariadb
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+  #    MARIADB_ROOT_PASSWORD: example
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 1
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+
+  #adminer:
+  #  image: adminer
+  #  restart: always
+  #  ports:
+  #    - 8080:8080
+
+
+#--env MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 -p 3306:3306 -v ./data:/var/lib/mysql
